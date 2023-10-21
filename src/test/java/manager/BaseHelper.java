@@ -2,6 +2,8 @@ package manager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,6 +62,35 @@ public class BaseHelper {
                     "actual result: " + actualResult);
             return false;
         }
+    }
+
+    public boolean isTextContainsGet2Strings(String expectedResult, String actualResult) {
+        if(actualResult.contains(expectedResult)) {
+            return true;
+        } else {
+            System.out.println("expected result: " + expectedResult +
+                    "actual result: " + actualResult);
+            return false;
+        }
+    }
+
+    public String getTextAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        return alert.getText().toUpperCase().trim();
+    }
+
+    public void clickAcceptAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+
+//        Alert alert = driver.switchTo().alert();
+//        // Alert present; set the flag
+//        presentFlag = true;
+//        // if present consume the alert
+//        alert.accept();
     }
 
     public void jsClickBase(String locator) {
