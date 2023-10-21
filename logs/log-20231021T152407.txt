@@ -1,0 +1,5 @@
+2023-10-21 15:24:16,103 INFO m.ApplicationManager [ApplicationManager.java:26] open page: https://ilcarro.web.app/search
+2023-10-21 15:24:16,397 INFO m.TestNGListener [TestNGListener.java:51] start test - onstart - : Gradle test
+2023-10-21 15:24:16,470 INFO t.BaseTest [BaseTest.java:52] stop method: negativePasswordWithoutLetters
+2023-10-21 15:24:16,475 INFO t.BaseTest [BaseTest.java:47] start method: negativePasswordWithoutLetters
+2023-10-21 15:24:16,478 INFO m.WDListener [WDListener.java:87] before find element By.xpath: //a[contains(@href, 'logout')]
