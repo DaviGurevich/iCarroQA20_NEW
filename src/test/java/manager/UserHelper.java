@@ -27,12 +27,18 @@ public class UserHelper extends BaseHelper{
     String btnRegNewUser = "document.querySelector('#terms-of-use').click();";
     String btnOkPopUpStr = "document.querySelector(`[type='button']`).click();";
     By checkBoxReg = By.xpath("//label[@for='terms-of-use']");
-    By btnUallaReg = By.xpath("//button[@type='submit']");
+    By btnYallaReg = By.xpath("//button[@type='submit']");
     By textPopUpSuccessRegH1 = By.xpath("//div[@class='dialog-container']//h1[@class='title']");
-    By btnLogout = By.xpath("//a[contains(@href, 'logout')]");
+// By btnLogout = By.xpath("//a[contains(@href, 'logout')]");
+
+    By btnLogout = By.xpath("//a[@ng-reflect-query-params='[object Object]']");
     By btnOkPopUp = By.xpath("//button[@type='button']");
+    By btnNotOkPopUp = By.xpath("//button[text()='Ok']");
+
+    By errorMessageWrongLogin = By.xpath("//h2[@class='message']");
     By errorMessageWrongEmailReg = By.xpath("//input[@autocomplete='email']/..//div//div");
     By errorMessageIncorrectPasswordReg = By.xpath("//input[@autocomplete='new-password']/..//div//div");
+
 
     public void login(UserDTO userDTO) {
         clickBase(btnLoginNavigatorMenu);
@@ -56,11 +62,11 @@ public class UserHelper extends BaseHelper{
     }
 
     public boolean validatePopUpMessageSuccessAfterLogin() {
-        return isTextEqual(textSuccessLoginPopUp, "Logged in success");
+        return isTextContainsGetTwoStrings("LOGGED IN SUCCESS", getTextBase(textSuccessLoginPopUp));
     }
 
     public boolean validatePopUpMessageLoginIncorrect() {
-        return isTextEqual(textSuccessLoginPopUp, "\"Login or Password incorrect\"");
+        return isTextContainsGetTwoStrings("LOGIN OR PASSWORD INCORRECT", getTextBase(errorMessageWrongLogin));
     }
 
     public void fillRegistrationForm(UserDtoLombok user) {
@@ -72,7 +78,7 @@ public class UserHelper extends BaseHelper{
         //clickBase(checkBoxReg);
         clickByXY(checkBoxReg, 5,15);
         //jsClickBase(btnRegNewUser);
-        clickBase(btnUallaReg);
+        clickBase(btnYallaReg);
     }
 
     public boolean validatePopUpMessageSuccessAfterRegistration() {

@@ -23,6 +23,8 @@ public class BaseHelper {
     private WebElement findElementBase(By locator) {
         System.out.println(locator);
         return driver.findElement(locator);
+
+
     }
 
     private List<WebElement> findElementsBase(By locator) {
@@ -60,6 +62,15 @@ public class BaseHelper {
         } else {
             System.out.println("expected result: " + expectedResult +
                     "actual result: " + actualResult);
+            return false;
+        }
+    }
+
+    public boolean isTextContainsGetTwoStrings(String expectedResult, String actualResult){
+        if(actualResult.contains(expectedResult)) {
+            return true;
+        } else {
+            System.out.println("expected result: " + expectedResult + "actual result" + actualResult);
             return false;
         }
     }

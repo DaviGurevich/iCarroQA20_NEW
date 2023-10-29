@@ -30,7 +30,7 @@ public class LoginTests extends BaseTest{
 
     @Test(priority = 1, invocationCount = 2)
     public void positiveLoginUserDTO() {
-        UserDTO userDTO = new UserDTO("testqa20@gmail.com", "123456Aa$");
+        UserDTO userDTO = new UserDTO("danasobakyan@mail.br", "12345Qwerty!&");
         app.getUserHelper().login(userDTO);
         Assert.assertTrue(app.getUserHelper().validatePopUpMessageSuccessAfterLogin());
     }
@@ -38,8 +38,8 @@ public class LoginTests extends BaseTest{
     @Test(priority = 2)
     public void positiveLoginUserDTOWith() {
         UserDTOWith userDTOWith = new UserDTOWith()
-                .withEmail("testqa20@gmail.com")
-                .withPassword("123456Aa$");
+                .withEmail("danasobakyan@mail.br")
+                .withPassword("12345Qwerty!&");
         app.getUserHelper().login(userDTOWith);
         Assert.assertTrue(app.getUserHelper().validatePopUpMessageSuccessAfterLogin());
     }
@@ -58,8 +58,8 @@ public class LoginTests extends BaseTest{
     @Test(priority = 4)
     public void negativePasswordWithoutSymbol() {
         UserDtoLombok userDtoLombok = UserDtoLombok.builder()
-                .email("testqa20@gmail.com")
-                .password("123456Aaa")
+                .email("danasobakyan@mail.br")
+                .password("12345Qwerty!")
                 .build();
         app.getUserHelper().loginUserDtoLombok(userDtoLombok);
         Assert.assertTrue(app.getUserHelper().validatePopUpMessageLoginIncorrect());
@@ -68,8 +68,8 @@ public class LoginTests extends BaseTest{
     @Test(priority = 5)
     public void negativePasswordWithoutNumbers() {
         UserDtoLombok userDtoLombok = UserDtoLombok.builder()
-                .email("testqa20@gmail.com")
-                .password("ddsdhjAa$")
+                .email("danasobakyan@mail.br")
+                .password("Qwerty!&")
                 .build();
         app.getUserHelper().loginUserDtoLombok(userDtoLombok);
         Assert.assertTrue(app.getUserHelper().validatePopUpMessageLoginIncorrect());
@@ -78,8 +78,8 @@ public class LoginTests extends BaseTest{
     @Test(priority = 6)
     public void negativePasswordWithoutLetters() {
         UserDtoLombok userDtoLombok = UserDtoLombok.builder()
-                .email("testqa20@gmail.com")
-                .password("12345678$")
+                .email("danasobakyan@mail.br")
+                .password("12345!&")
                 .build();
         app.getUserHelper().loginUserDtoLombok(userDtoLombok);
         Assert.assertTrue(app.getUserHelper().validatePopUpMessageLoginIncorrect());
